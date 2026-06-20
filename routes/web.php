@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\InvCategoryController;
+use App\Http\Controllers\InvLocationController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -9,6 +11,18 @@ Route::get('/', function () {
 });
 
 Route::resource('/product', ProductController::class);
+
+Route::get('/inv-category/data', [InvCategoryController::class, 'data'])->name('inv-category.data');
+Route::resource('/inv-category', InvCategoryController::class);
+
+Route::get('/inv-location/data', [InvLocationController::class, 'data'])->name('inv-location.data');
+Route::resource('/inv-location', InvLocationController::class);
+
+Route::get('/inv-product/data', [App\Http\Controllers\InvProductController::class, 'data'])->name('inv-product.data');
+Route::resource('/inv-product', App\Http\Controllers\InvProductController::class);
+
+Route::get('/inv-transaction/data', [App\Http\Controllers\InvTransactionController::class, 'data'])->name('inv-transaction.data');
+Route::resource('/inv-transaction', App\Http\Controllers\InvTransactionController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
