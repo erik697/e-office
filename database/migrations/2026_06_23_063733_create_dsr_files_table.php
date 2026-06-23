@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inv_transactions', function (Blueprint $table) {
+        Schema::create('dsr_files', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 50);
-            $table->text('note');
-            $table->date('register');
-            $table->date('due_time')->nullable();
-            $table->enum('status', ['pending', 'completed', 'cancelled'])->default('pending');
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->string('file_path');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('staff_id');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inv_transactions');
+        Schema::dropIfExists('dsr_files');
     }
 };

@@ -17,17 +17,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        User::factory(10)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        //     'password' => bcrypt('password'),
-        // ]);
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => bcrypt('password'),
+        ]);
 
         // InvCategory::faker()->seed(50);
-         DB::table('inv_categories')->insert([
-        'name' => rand(1, 100),
-    ]);
+    //      DB::table('inv_categories')->insert([
+    //     'name' => rand(1, 100),
+    // ]);
     }
 }

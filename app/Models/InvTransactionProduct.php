@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class InvTransactionProduct extends Model
 {
-    protected $fillable = ['transaction_id', 'product_id', 'quantity'];
+    protected $fillable = ['transaction_id', 'product_id', 'quantity', 'price'];
 
     public function transaction()
     {

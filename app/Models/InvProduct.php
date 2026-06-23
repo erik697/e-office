@@ -22,4 +22,14 @@ class InvProduct extends Model
     {
         return $this->hasMany(InvTransactionProduct::class, 'product_id');
     }
+
+    public function transactions()
+    {
+        return $this->belongsToMany(
+            InvTransaction::class,
+            'inv_transaction_products',
+            'product_id',
+            'transaction_id'
+        )->withPivot('quantity');
+    }
 }

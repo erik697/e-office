@@ -24,6 +24,16 @@ Route::resource('/inv-product', App\Http\Controllers\InvProductController::class
 Route::get('/inv-transaction/data', [App\Http\Controllers\InvTransactionController::class, 'data'])->name('inv-transaction.data');
 Route::resource('/inv-transaction', App\Http\Controllers\InvTransactionController::class);
 
+Route::get('/arc-category/data', [App\Http\Controllers\ArcCategoryController::class, 'data'])->name('arc-category.data');
+Route::resource('/arc-category', App\Http\Controllers\ArcCategoryController::class);
+
+Route::get('/arc-document/data', [App\Http\Controllers\ArcDocumentController::class, 'data'])->name('arc-document.data');
+Route::get('/arc-document/download/{id}', [App\Http\Controllers\ArcDocumentController::class, 'download'])->name('arc-document.download');
+Route::resource('/arc-document', App\Http\Controllers\ArcDocumentController::class);
+
+Route::get('/dsr-category/data', [App\Http\Controllers\DsrCategoryController::class, 'data'])->name('dsr-category.data');
+Route::resource('/dsr-category', App\Http\Controllers\DsrCategoryController::class);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

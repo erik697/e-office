@@ -1,12 +1,12 @@
 @extends('adminlte::page')
 
-@section('title', 'inv-transaction')
+@section('title', 'arc-category')
 
 @section('content_header')
 <div class="d-flex justify-content-between">
-    <h1>Transaksi Inventaris</h1>
+    <h1>Kategori Arsip</h1>
 
-    <a href="{{ route('inv-transaction.create') }}"
+    <a href="{{ route('arc-category.create') }}"
        class="btn btn-primary">
         <i class="fas fa-plus"></i> Tambah Data
     </a>
@@ -24,15 +24,11 @@
     </x-adminlte-alert>
 @endif
 
-        <table id="inv-transaction-table" class="table table-bordered table-striped">
+        <table id="arc-category-table" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Status</th>
-                    <th>Note</th>
-                    <th>Register</th>
-                    <th>Due Time</th>
-                    <th>Products</th>
+                    <th>Nama</th>
                     <th width="150">Aksi</th>
                 </tr>
             </thead>
@@ -51,13 +47,13 @@
 <script>
 $(function () {
 
-    $('#inv-transaction-table').DataTable({
+    $('#arc-category-table').DataTable({
         processing: true,
         serverSide: true,
         responsive: true,
         autoWidth: false,
 
-        ajax: "{{ route('inv-transaction.data') }}",
+        ajax: "{{ route('arc-category.data') }}",
 
         columns: [
             {
@@ -69,19 +65,10 @@ $(function () {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 }
             },
-            { data: 'status', name: 'status' },
-            { data: 'note', name: 'note' },
-            { data: 'register', name: 'register' },
-            { data: 'due_time', name: 'due_time' },
-           {
-                data: 'products',
-                name: 'products',
-                orderable: false,
-                searchable: false,
-                render: function(data, type, row) {
-                    return data;
-                }
-            },
+            // { data: 'id', name: 'id' },
+            { data: 'name', name: 'name' },
+            // { data: 'email', name: 'email' },
+            // { data: 'created_at', name: 'created_at' },
             {
                 data: 'action',
                 name: 'action',
@@ -118,7 +105,7 @@ $(document).on('click', '.btn-edit', function () {
 
     let id = $(this).data('id');
 
-        window.location.href = '/inv-transaction/' + id + '/edit';
+        window.location.href = '/arc-category/' + id + '/edit';
 
 });
 
@@ -129,14 +116,14 @@ $(document).on('click', '.btn-delete', function () {
     if(confirm('Hapus data?')) {
 
         $.ajax({
-            url: '/inv-transaction/' + id,
+            url: '/arc-category/' + id,
             type: 'DELETE',
             data: {
                 _token: '{{ csrf_token() }}'
             },
             success: function(response) {
                 alert('Data berhasil dihapus');
-                $('#inv-transaction-table').DataTable().ajax.reload();
+                $('#arc-category-table').DataTable().ajax.reload();
             },
             error: function(xhr) {
                 console.log(xhr);
@@ -154,7 +141,7 @@ $(document).on('click', '.btn-detail', function () {
 
     let id = $(this).data('id');
 
-    window.location.href = '/inv-transaction/' + id;
+    window.location.href = '/arc-category/' + id;
 
 });
 </script>

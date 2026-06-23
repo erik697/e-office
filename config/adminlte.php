@@ -334,9 +334,26 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'E-Surat',
+            'icon' => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'Product-management',
+                    'url' => '/inv-product',
+                ],
+                [
+                    'text' => 'Category',
+                    'url' => '/inv-category',
+                ],
+                [
+                    'text' => 'Location',
+                    'url' => '/inv-location',
+                ],
+                [
+                    'text' => 'Product-transaction',
+                    'url' => '/inv-transaction',
+                ],
+            ],
         ],
         [
             'text' => 'E-Inventory',
@@ -344,27 +361,31 @@ return [
             'submenu' => [
                 [
                     'text' => 'Product-management',
-                    'url' => '#',
+                    'url' => '/inv-product',
                 ],
                 [
                     'text' => 'Category',
-                    'url' => '#',
+                    'url' => '/inv-category',
+                ],
+                [
+                    'text' => 'Location',
+                    'url' => '/inv-location',
                 ],
                 [
                     'text' => 'Product-transaction',
-                    'url' => '#',
+                    'url' => '/inv-transaction',
                 ],
             ],
         ],
         ['header' => 'labels'],
         [
-            'text' => 'important',
-            'icon_color' => 'red',
-            'url' => '#',
+            'text' => 'e-dosir',
+            'url' => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
+            'text' => 'staff',
+            'icon' => 'fas fa-fw fa-user',
             'url' => '#',
         ],
         [
